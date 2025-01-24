@@ -4,7 +4,7 @@
 
 <h1>Counter</h1>
 
-<p role="status">Current count: @AppState.Count</p>
+<p role="status">Current count: @AppState.Counter</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
@@ -16,6 +16,6 @@
 
     private void IncrementCount()
     {
-        AppState.Count++;
+        AppState.Counter++;
     }
 }

@@ -1,3 +1,4 @@
+@using ManageAppStateBlazorServer.Interfaces
 ﻿<div style="height:42px;">
     <span style="font-size:x-large">@AppState.Message</span>
 </div>
@@ -5,4 +6,33 @@
 @code {
     [CascadingParameter]
     public MyCascadingAppState AppState { get; set; }
+
+    // private Copy Of AppState data
+    IAppState state;
+
+    protected override void OnInitialized()
+    {
+        // Copy AppState data
+        state = AppState.GetCopy();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        
+        // Check for changes
+        if (AppState.Message != state.Message)
+        {
+            // message has changed
+            state.Message = AppState.Message;
+
+            // Do Some Thing here if you want an action when message changes
+
+        }
+        else if (AppState.Counter != state.Counter)
+        {
+            // count has changed
+            state.Counter = AppState.Counter;
+        }
+        
+    }
 }
