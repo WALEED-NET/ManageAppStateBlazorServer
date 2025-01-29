@@ -7,5 +7,5 @@ public class AppState : IAppState
 {
     public string Message { get; set; } = "";
     public int Counter { get; set; }
-
+    public DateTime LastStorageSaveTime { get ; set; }
 }
